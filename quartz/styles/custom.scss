@@ -1,3 +1,69 @@
 @use "./base.scss";
 
 // put your custom CSS here!
+
+$typeScale: 0.92;
+$typeRatio: 1.2;
+$minorTypeRatio: 1.08;
+$lineHeight: 1.6;
+$contentWidth: 820px;
+$sidePanelWidth: 320px;
+
+$mobileFontSize: 20px * $typeScale;
+$tabletFontSize: 22px * $typeScale;
+$desktopFontSize: 24px * $typeScale;
+
+article {
+  font-size: $mobileFontSize;
+  line-height: $lineHeight;
+}
+
+article p,
+article li,
+article tbody {
+  line-height: $lineHeight;
+}
+
+article h1 {
+  font-size: $typeRatio * $typeRatio * $typeRatio * 1em;
+}
+
+article h2 {
+  font-size: $typeRatio * $typeRatio * 1em;
+}
+
+article h3 {
+  font-size: $typeRatio * 1em;
+}
+
+article h4 {
+  font-size: $minorTypeRatio * 1em;
+}
+
+article h5 {
+  font-size: 1em;
+}
+
+article h6 {
+  font-size: calc(1em / $minorTypeRatio);
+}
+
+@media all and (min-width: 800px) {
+  article {
+    font-size: $tabletFontSize;
+  }
+}
+
+@media all and (min-width: 1200px) {
+  .page {
+    max-width: $sidePanelWidth + $contentWidth + $sidePanelWidth;
+  }
+
+  .page > #quartz-body {
+    grid-template-columns: $sidePanelWidth minmax(0, $contentWidth) $sidePanelWidth;
+  }
+
+  article {
+    font-size: $desktopFontSize;
+  }
+}
